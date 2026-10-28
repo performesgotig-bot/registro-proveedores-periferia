@@ -10,7 +10,7 @@ El equipo administrativo debe transcribir datos y reunir soportes repetidos para
 Navegador (web/index.html)
         │ HTTP
         ▼
-Express (src/server.ts) ── adaptador OpenAI (src/llm/adapter.ts)
+Express (src/server.ts) ── adaptador Google Gemini (src/llm/adapter.ts)
         │                              │
         └──── herramientas Zod ────────┘
                      │
@@ -28,7 +28,7 @@ El backend envía el historial y las definiciones de herramientas al adaptador O
 
 ## 4. Elección del modelo
 
-Se eligió OpenAI con `gpt-4o-mini` como valor inicial por su soporte de llamadas a herramientas y su costo relativo bajo. El modelo es configurable mediante `OPENAI_MODEL`; la clave se lee desde `OPENAI_API_KEY` en el backend. El costo por caso depende de la longitud de las solicitudes/respuestas y de las tarifas vigentes; no se fija una cifra porque el uso real de tokens todavía no se ha medido.
+Se eligió Google Gemini con `gemini-2.5-flash` como modelo inicial por su soporte de llamadas a herramientas. El modelo es configurable mediante `GEMINI_MODEL`; la clave se lee desde `GEMINI_API_KEY` en el backend. El costo por caso depende de la longitud de las solicitudes/respuestas y de las tarifas vigentes; no se fija una cifra porque el uso real de tokens todavía no se ha medido.
 
 ## 5. Diseño del portal web
 
@@ -38,7 +38,7 @@ Para una integración futura se usaría automatización de navegador controlada 
 
 1. **Node.js y scripts npm:** se prioriza el runtime disponible en el entorno. Bun se descartó para no requerir instalar otro runtime.
 2. **Interfaz HTML sin framework:** es suficiente para el chat y evita sumar compilación del frontend; se descartó React por el tamaño acotado de la UI.
-3. **OpenAI por HTTP desde un adaptador propio:** reduce dependencias y mantiene separada la interfaz del proveedor; se descartó acoplar la lógica del ciclo a un SDK.
+3. **Gemini por HTTP desde un adaptador propio:** reduce dependencias y mantiene separada la interfaz del proveedor; se descartó acoplar la lógica del ciclo a un SDK.
 4. **Archivos como persistencia:** conserva la trazabilidad y cumple el alcance local sin una base de datos; no cubre concurrencia o almacenamiento multiusuario de producción.
 
 ## 7. Supuestos

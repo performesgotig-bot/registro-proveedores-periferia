@@ -5,16 +5,18 @@ Aplicación local para procesar las solicitudes ficticias del reto: lectura de c
 ## Requisitos
 
 - Node.js 20 o superior
-- Una clave de API de OpenAI para conversar con el agente. La demo determinista no la requiere.
+- Una clave de API de Gemini para conversar con el agente. La demo determinista no la requiere.
 
 ## Inicio rápido
 
-En Windows PowerShell, copia `.env.example` a `.env`, agrega tu clave a `OPENAI_API_KEY` y luego ejecuta:
+En Windows PowerShell, copia `.env.example` a `.env`, agrega tu nueva clave de Gemini a `GEMINI_API_KEY` y luego ejecuta:
 
 ```powershell
 npm.cmd install
 npm.cmd run dev
 ```
+
+La clave compartida anteriormente debe revocarse antes de configurar una clave nueva. No la pegues en el chat ni la guardes en Git; `.env` está excluido del repositorio.
 
 Abre <http://localhost:3000>. La clave permanece en el backend. No se incluye un enlace público desplegado.
 
@@ -31,8 +33,8 @@ La demo importa y ejecuta las herramientas reales, sin llamar al modelo. Procesa
 | Variable | Uso | Valor de ejemplo |
 |---|---|---|
 | `PORT` | Puerto local HTTP | `3000` |
-| `OPENAI_API_KEY` | Clave del backend; no se expone al navegador | Vacía en `.env.example` |
-| `OPENAI_MODEL` | Modelo de chat | `gpt-4o-mini` |
+| `GEMINI_API_KEY` | Clave del backend; no se expone al navegador | Vacía en `.env.example` |
+| `GEMINI_MODEL` | Modelo de chat | `gemini-2.5-flash` |
 | `MAX_TOOL_ITERATIONS` | Límite de llamadas a herramientas por turno | `25` |
 | `MAX_SESSION_TOKENS` | Límite aproximado de tokens por sesión | `30000` |
 

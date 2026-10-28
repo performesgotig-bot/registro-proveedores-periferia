@@ -27,7 +27,7 @@ app.use(express.json({ limit: "32kb" }));
 app.use(express.static(path.join(root, "web")));
 
 app.get("/api/health", (_request, response) => {
-  response.json({ ok: true, provider: "OpenAI", model: process.env.OPENAI_MODEL ?? "gpt-4o-mini" });
+  response.json({ ok: true, provider: "Google Gemini", model: process.env.GEMINI_MODEL ?? "gemini-2.5-flash" });
 });
 
 app.get("/api/sessions/:id", (request, response) => {
